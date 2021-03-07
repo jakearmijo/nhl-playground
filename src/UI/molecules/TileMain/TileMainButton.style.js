@@ -9,17 +9,9 @@ import { ReactComponent as PresentationIcon } from "@zendeskgarden/svg-icons/src
 
 const StyledCol = styled(Col)`
   ${(p) => mediaQuery("down", "xs", p.theme)} {
-    margin-top: ${(p) => p.theme.space.sm};
+    margin-top: ${(p) => p.theme.space};
   }
 `;
-
-// export const StyledTiledMain = `
-//     border: 2px solid #000000;
-//     border-radius: 50%;
-//     width: 30px;
-//     height: 30px;
-//     padding: 0px;
-// `;
 
 export const StyledTiledMain = () => (
   <Tiles name="example" aria-label="Tiles component example">

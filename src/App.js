@@ -1,5 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./assests/NHL_Logo_former.svg";
+import "./App.css";
+import TileMainButton from "./UI/molecules/TileMain";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <TileMainButton></TileMainButton>
         <a
           className="App-link"
           href="https://reactjs.org"

@@ -13,15 +13,37 @@ const StyledCol = styled(Col)`
   }
 `;
 
-export const StyledTiledMain = () => (
+export const StyledTiledMain = ({ gameData }) => (
   <Tiles name="example" aria-label="Tiles component example">
+    {console.log(
+      "🚀 ~ file: TileMainButton.style.js ~ line 1 ~ gameData",
+      gameData
+    )}
     <Row>
-      <Col sm={4}>
+      {gameData.map((game, idx) => (
+        <Col sm={4}>
+          <Tiles.Tile value="leaf">
+            <Tiles.Icon>
+              <LeafIcon />
+            </Tiles.Icon>
+            <Tiles.Label>Game #{idx + 1}</Tiles.Label>
+            <Tiles.Label>{game.gameDate}</Tiles.Label>
+            <Tiles.Label>{game.status.detailedState}</Tiles.Label>
+            <Tiles.Label>
+              {game.teams.away.team.name} VS {game.teams.home.team.name}
+            </Tiles.Label>
+            <Tiles.Label>
+              {game.teams.away.score} - {game.teams.home.score}
+            </Tiles.Label>
+          </Tiles.Tile>
+        </Col>
+      ))}
+      {/* <Col sm={4}>
         <Tiles.Tile value="leaf">
           <Tiles.Icon>
             <LeafIcon />
           </Tiles.Icon>
-          <Tiles.Label>Leaf</Tiles.Label>
+          <Tiles.Label>{idx}</Tiles.Label>
         </Tiles.Tile>
       </Col>
       <StyledCol sm={4}>
@@ -29,7 +51,7 @@ export const StyledTiledMain = () => (
           <Tiles.Icon>
             <ImageIcon />
           </Tiles.Icon>
-          <Tiles.Label>Image</Tiles.Label>
+          <Tiles.Label>GAME 2</Tiles.Label>
         </Tiles.Tile>
       </StyledCol>
       <StyledCol sm={4}>
@@ -37,9 +59,9 @@ export const StyledTiledMain = () => (
           <Tiles.Icon>
             <PresentationIcon />
           </Tiles.Icon>
-          <Tiles.Label>Presentation</Tiles.Label>
+          <Tiles.Label>GAME 3</Tiles.Label>
         </Tiles.Tile>
-      </StyledCol>
+      </StyledCol> */}
     </Row>
   </Tiles>
 );

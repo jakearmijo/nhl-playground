@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.8.1",
     "@zendeskgarden/react-forms": "^8.32.2",
     "@zendeskgarden/react-grid": "^8.32.2",
+    "@zendeskgarden/react-tables": "^8.32.2",
     "@zendeskgarden/react-theming": "^8.32.2",
     "@zendeskgarden/svg-icons": "^6.29.0",
     "react": "^17.0.1",

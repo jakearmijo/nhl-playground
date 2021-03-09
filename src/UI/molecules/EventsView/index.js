@@ -1,1 +1,1 @@
-export { default } from "./TileMainButton";
+export { default } from "./EventsView.style";

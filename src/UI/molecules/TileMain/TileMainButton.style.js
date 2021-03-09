@@ -3,9 +3,6 @@ import styled from "styled-components";
 import { mediaQuery } from "@zendeskgarden/react-theming";
 import { Row, Col } from "@zendeskgarden/react-grid";
 import { Tiles } from "@zendeskgarden/react-forms";
-import { ReactComponent as LeafIcon } from "@zendeskgarden/svg-icons/src/16/leaf-stroke.svg";
-import { ReactComponent as ImageIcon } from "@zendeskgarden/svg-icons/src/16/file-image-stroke.svg";
-import { ReactComponent as PresentationIcon } from "@zendeskgarden/svg-icons/src/16/file-presentation-stroke.svg";
 
 const StyledCol = styled(Col)`
   ${(p) => mediaQuery("down", "xs", p.theme)} {
@@ -22,10 +19,8 @@ export const StyledTiledMain = ({ gameData }) => (
     <Row>
       {gameData.map((game, idx) => (
         <Col sm={4}>
-          <Tiles.Tile value="leaf">
-            <Tiles.Icon>
-              <LeafIcon />
-            </Tiles.Icon>
+          <Tiles.Tile value="game">
+            <Tiles.Icon>{}</Tiles.Icon>
             <Tiles.Label>Game #{idx + 1}</Tiles.Label>
             <Tiles.Label>{game.gameDate}</Tiles.Label>
             <Tiles.Label>{game.status.detailedState}</Tiles.Label>

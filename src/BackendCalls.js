@@ -4,13 +4,11 @@ export const getLiveGameFeed = (liveGameID) => {
     .then(
       (result) => {
         this.setState({
-          isLoaded: true,
           liveData: result.liveData,
         });
       },
       (error) => {
         this.setState({
-          isLoaded: true,
           error,
         });
       }

@@ -18,14 +18,28 @@ const StyledSpacerCell = styled(HeaderCell)`
   padding: 0;
   width: ${SCROLLBAR_SIZE}px;
 `;
-const rowData = 3;
 
 const EventsView = () => {
-  const [liveGame, setState] = useState([]);
+  const [liveGame, setState] = useState();
   useEffect(() => {
-    fetch(getLiveGameFeed(liveGameID)).then((res) => setState(res.data));
-  }, []);
-  return (
+    fetch(`https://statsapi.web.nhl.com/api/v1/game/${liveGameID}/feed/live`)
+    .then((res) => res.json())
+    .then(
+      (result) => {
+        setState({
+          liveData: result.liveData,
+        });
+      },
+      (error) => {
+        setState({
+          error,
+        });
+      }
+    )
+  }
+  )
+    
+    return (
     <div style={{ overflowX: "auto" }}>
       <Table style={{ minWidth: 500 }}>
         <Head>
@@ -40,18 +54,20 @@ const EventsView = () => {
       <div style={{ maxHeight: 500, overflowY: "auto" }}>
         <Table>
           {/* <Body>
-            {liveGame.map((data) => (
-              <Row key={data.index}>
-                <Cell>{data.fruit}</Cell>
-                <Cell>{data.sun}</Cell>
-                <Cell>{data.soil}</Cell>
+            {liveGame.liveData.map((play,idx) => (
+              <Row key={idx}>
+                <Cell>{play.allPlays.result.eventTypeId}}</Cell>
+                <Cell>{play.result.event}</Cell>
+                <Cell>{play.result.description}</Cell>
               </Row>
             ))}
           </Body> */}
+          <Body>
+            {console.log("🚀 ~ file: EventsView.style.js ~ line 32 ~ useEffect ~ liveGame", liveGame)}
+          </Body>
         </Table>
       </div>
     </div>
   );
-};
-
+}
 export default EventsView;

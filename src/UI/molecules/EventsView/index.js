@@ -1,1 +1,1 @@
-export { default } from "./EventsView.style";
+export { default } from "./EventsView";

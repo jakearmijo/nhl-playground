@@ -13,7 +13,7 @@ function App() {
         </TileMainButton>
         <a
           className="App-link"
-          href="https://nhl.com"
+          href="https://www.nhl.com"
           target="_blank"
           rel="noopener noreferrer"
         >

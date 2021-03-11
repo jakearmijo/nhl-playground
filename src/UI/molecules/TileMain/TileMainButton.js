@@ -40,13 +40,6 @@ export default class TileMainButton extends Component {
       return (
         <>
           <StyledTiledMain gameData={gameData}></StyledTiledMain>
-          {/* <ul>
-            {gameData.games.map((game, idx) => (
-              <li key={idx}>
-                {game.games} {game.status}
-              </li>
-            ))}
-          </ul> */}
         </>
       );
     }

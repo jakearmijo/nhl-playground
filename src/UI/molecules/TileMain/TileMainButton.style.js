@@ -10,12 +10,12 @@ import EventsView from "../EventsView";
 //   }
 // `;
 
-export const StyledTiledMain = ( { gameData } ) => (
+export const StyledTiledMain = ({ gameData }) => (
   <Tiles name="example" aria-label="Tiles component example">
     <Row>
       {gameData.map((game, idx) => (
         <Col sm={4} key={idx}>
-          <Tiles.Tile value="game" >
+          <Tiles.Tile value="game">
             <Tiles.Icon>{}</Tiles.Icon>
             <Tiles.Label>Game #{idx + 1}</Tiles.Label>
             <Tiles.Label>{game.gameDate}</Tiles.Label>
@@ -30,30 +30,6 @@ export const StyledTiledMain = ( { gameData } ) => (
           <EventsView></EventsView>
         </Col>
       ))}
-      {/* <Col sm={4}>
-        <Tiles.Tile value="leaf">
-          <Tiles.Icon>
-            <LeafIcon />
-          </Tiles.Icon>
-          <Tiles.Label>{idx}</Tiles.Label>
-        </Tiles.Tile>
-      </Col>
-      <StyledCol sm={4}>
-        <Tiles.Tile value="image">
-          <Tiles.Icon>
-            <ImageIcon />
-          </Tiles.Icon>
-          <Tiles.Label>GAME 2</Tiles.Label>
-        </Tiles.Tile>
-      </StyledCol>
-      <StyledCol sm={4}>
-        <Tiles.Tile value="presentation">
-          <Tiles.Icon>
-            <PresentationIcon />
-          </Tiles.Icon>
-          <Tiles.Label>GAME 3</Tiles.Label>
-        </Tiles.Tile>
-      </StyledCol> */}
     </Row>
   </Tiles>
 );

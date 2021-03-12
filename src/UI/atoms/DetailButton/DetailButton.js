@@ -1,11 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 import { Row, Col } from "@zendeskgarden/react-grid";
 import { Button } from "@zendeskgarden/react-buttons";
 
-const StyledRow = styled(Row)`
-  margin-top: ${(p) => p.theme.space.md};
-`;
+// const StyledRow = styled(Row)`
+//   margin-top: ${(p) => p.theme.space.md};
+// `;
 
 const DetailButton = () => (
   <>

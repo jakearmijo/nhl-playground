@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import getScrollbarSize from "dom-helpers/scrollbarSize";
 import {
@@ -45,7 +45,7 @@ function EventsView(props) {
         );
     };
     fetchData();
-  }, []);
+  }, [props.gamePk]);
 
   return (
     <div style={{ overflowX: "auto" }}>

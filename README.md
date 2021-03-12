@@ -9,11 +9,12 @@ I set out to create something with that memory. I found the NHL API(https://stat
 Offical start date of this project was 3-8-2021.
 
 ## Follow the process below to play along
-
-$ git clone https://github.com/jakearmijo/nhl-playground.git
-$ cd nhl-playground
-$ npm install
-$ npm start
+<ul>
+  <li> $ git clone https://github.com/jakearmijo/nhl-playground.git</li> 
+  <li> $ cd nhl-playground</li> 
+  <li> $ npm install</li> 
+  <li> $ npm start</li> 
+</ul>
 
 Visit localhost:3000 to view and enjoy!
 

@@ -21,8 +21,6 @@ const StyledSpacerCell = styled(HeaderCell)`
   width: ${SCROLLBAR_SIZE}px;
 `;
 function EventsView(props) {
-  console.log("🚀 ~ file: EventsView.js ~ line 26 ~ EventsView ~ props", props);
-
   const [liveGame, setState] = useState();
 
   useEffect(() => {

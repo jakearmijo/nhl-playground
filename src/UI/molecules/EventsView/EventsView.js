@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import styled from "styled-components";
 import getScrollbarSize from "dom-helpers/scrollbarSize";
 import {
@@ -10,94 +10,90 @@ import {
   Row,
   Table,
 } from "@zendeskgarden/react-tables";
+import DetailButton from "../../atoms/DetailButton";
 
-const testing = [
-  { name: "jake", age: 30, sports: "Hockey" },
-  { name: "jake", age: 30, sports: "Hockey" },
-  { name: "jake", age: 30, sports: "Hockey" },
-  { name: "jake", age: 30, sports: "Hockey" },
-  { name: "jake", age: 30, sports: "Hockey" },
-  { name: "jake", age: 30, sports: "Hockey" },
-];
+import { white } from "chalk";
+
 const SCROLLBAR_SIZE = getScrollbarSize();
-const liveGameID = 2020020414;
+
 const StyledSpacerCell = styled(HeaderCell)`
   padding: 0;
   width: ${SCROLLBAR_SIZE}px;
 `;
-export default class EventsView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoaded: false,
-      liveGame: {},
+function EventsView(props) {
+  console.log("🚀 ~ file: EventsView.js ~ line 26 ~ EventsView ~ props", props);
+
+  const [liveGame, setState] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch(
+        `https://statsapi.web.nhl.com/api/v1/game/${props.gamePk}/feed/live`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            setState({
+              liveGame: result.liveData.plays.allPlays,
+            });
+          },
+          (error) => {
+            setState({
+              error,
+            });
+          }
+        );
     };
-  }
+    fetchData();
+  }, []);
 
-  componentDidMount() {
-    fetch(`https://statsapi.web.nhl.com/api/v1/game/${liveGameID}/feed/live`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            liveGame: result.liveData.plays.allPlays,
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
-        }
-      );
-  }
-  checkIfDataLoaded() {}
-  render() {
-    const { error, isLoaded, liveGame } = this.state;
-
-    return (
-      <div style={{ overflowX: "auto" }}>
-        {!liveGame ? (
+  return (
+    <div style={{ overflowX: "auto" }}>
+      {liveGame === undefined ? (
+        <Table style={{ minWidth: 500, backgroundColor: white }}>
+          <Head>
+            <HeaderRow>
+              <HeaderCell>LOADING</HeaderCell>
+              <HeaderCell>LOADING</HeaderCell>
+              <HeaderCell>LOADING</HeaderCell>
+              <StyledSpacerCell aria-hidden />
+            </HeaderRow>
+          </Head>
+        </Table>
+      ) : (
+        <div>
+          <DetailButton />
           <Table style={{ minWidth: 500 }}>
             <Head>
               <HeaderRow>
-                <HeaderCell>LOADING</HeaderCell>
-                <HeaderCell>LOADING</HeaderCell>
-                <HeaderCell>LOADING</HeaderCell>
+                <HeaderCell>Time:</HeaderCell>
+                <HeaderCell>EventTypeId</HeaderCell>
+                <HeaderCell>Description</HeaderCell>
                 <StyledSpacerCell aria-hidden />
               </HeaderRow>
             </Head>
           </Table>
-        ) : (
-          <div>
-            <Table style={{ minWidth: 500 }}>
-              <Head>
-                <HeaderRow>
-                  <HeaderCell>Result:</HeaderCell>
-                  <HeaderCell>EventTypeId</HeaderCell>
-                  <HeaderCell>Description</HeaderCell>
-                  <StyledSpacerCell aria-hidden />
-                </HeaderRow>
-              </Head>
-            </Table>
-            <div style={{ maxHeight: 500, overflowY: "auto" }}>
-              <Table>
-                {/* <Body>
-                  {liveGame.map((play, idx) => (
+          <div style={{ maxHeight: 500, overflowY: "auto" }}>
+            <Table>
+              <Body>
+                {liveGame.liveGame
+                  .slice(0)
+                  .reverse()
+                  .map((play, idx) => (
                     <Row key={idx}>
-                      <Cell>{play.result.name}</Cell>
-                      <Cell>{play.age}</Cell>
+                      <Cell>{play.about.periodTimeRemaining}</Cell>
+                      <Cell>{play.result.event}</Cell>
                       <Cell>{play.result.description}</Cell>
                     </Row>
                   ))}
-                </Body> */}
-                <Body></Body>
-              </Table>
-            </div>
+              </Body>
+              <Body></Body>
+            </Table>
           </div>
-        )}
-      </div>
-    );
-  }
+        </div>
+      )}
+    </div>
+  );
 }
+
+export default EventsView;

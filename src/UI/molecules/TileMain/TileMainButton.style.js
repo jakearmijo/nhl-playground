@@ -12,11 +12,7 @@ const StyledCol = styled(Col)`
 `;
 
 export const StyledTiledMain = ({ gameData }) => (
-  <Tiles>
-    {console.log(
-      "🚀 ~ file: TileMainButton.style.js ~ line 18 ~ gamePk",
-      gameData[0].gamePk
-    )}
+  <Tiles name="game">
     <Row>
       {gameData.map((game, idx) => (
         <StyledCol sm={4} key={idx}>

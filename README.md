@@ -2,7 +2,7 @@
 
 # Getting Started with my NHL-Playground
 
-HELLO!!!!! and Welcome to my NHL-Playground. I am Jake Armijo the creator. I always enjoyed listening to the hockey games on the radio with my dad. During the 90's and earl 2000's the Chicago Blackhawks were NOT broadcasted on TV. Therefore my father and I would listen to the games on this tiny black handheld radio. I can still picture this thing in my head. 
+HELLO!!!!! and Welcome to my NHL-Playground. I am Jake Armijo the creator. I always enjoyed listening to the hockey games on the radio with my dad. During the 90's and early 2000's the Chicago Blackhawks were NOT broadcasted on TV. Therefore my father and I would listen to the games on this tiny black handheld radio. I can still picture this thing in my head. 
 
 I set out to create something with that memory. I found the NHL API(https://statsapi.web.nhl.com/api/v1/schedule) and thought it would be cool to create a center place for all the games including their play by play and a option to listen. I also invison a little hockey rink picture and to call the cordinates of the puck and have it move around the rink so you can, in a way, watch multiple games at one time.
 

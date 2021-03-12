@@ -16,7 +16,7 @@ Offical start date of this project was 3-8-2021.
   <li> $ npm start</li> 
 </ul>
 
-Visit <a href='http://localhost:3000' target='blank'>http://localhost:3000 to view and enjoy!
+Visit <a href='http://localhost:3000' target='blank'>http://localhost:3000</a> to view and enjoy!
 
 ## Available Scripts
 
@@ -25,7 +25,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000]to view it in the browser.
+Open <a href='http://localhost:3000' target='blank'>http://localhost:3000</a> to view it in the browser.
 
 ### `npm test`
 --> Testing needs work!

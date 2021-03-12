@@ -1,0 +1,99 @@
+import React, { Component, useState, useEffect } from "react";
+import styled from "styled-components";
+import getScrollbarSize from "dom-helpers/scrollbarSize";
+import {
+  Body,
+  Cell,
+  Head,
+  HeaderCell,
+  HeaderRow,
+  Row,
+  Table,
+} from "@zendeskgarden/react-tables";
+import DetailButton from "../../atoms/DetailButton";
+
+import { white } from "chalk";
+
+const SCROLLBAR_SIZE = getScrollbarSize();
+
+const StyledSpacerCell = styled(HeaderCell)`
+  padding: 0;
+  width: ${SCROLLBAR_SIZE}px;
+`;
+function EventsView(props) {
+  console.log("🚀 ~ file: EventsView.js ~ line 26 ~ EventsView ~ props", props);
+
+  const [liveGame, setState] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch(
+        `https://statsapi.web.nhl.com/api/v1/game/${props.gamePk}/feed/live`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            setState({
+              liveGame: result.liveData.plays.allPlays,
+            });
+          },
+          (error) => {
+            setState({
+              error,
+            });
+          }
+        );
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <div style={{ overflowX: "auto" }}>
+      {liveGame === undefined ? (
+        <Table style={{ minWidth: 500, backgroundColor: white }}>
+          <Head>
+            <HeaderRow>
+              <HeaderCell>LOADING</HeaderCell>
+              <HeaderCell>LOADING</HeaderCell>
+              <HeaderCell>LOADING</HeaderCell>
+              <StyledSpacerCell aria-hidden />
+            </HeaderRow>
+          </Head>
+        </Table>
+      ) : (
+        <div>
+          <DetailButton />
+          <Table style={{ minWidth: 500 }}>
+            <Head>
+              <HeaderRow>
+                <HeaderCell>Time:</HeaderCell>
+                <HeaderCell>EventTypeId</HeaderCell>
+                <HeaderCell>Description</HeaderCell>
+                <StyledSpacerCell aria-hidden />
+              </HeaderRow>
+            </Head>
+          </Table>
+          <div style={{ maxHeight: 500, overflowY: "auto" }}>
+            <Table>
+              <Body>
+                {liveGame.liveGame
+                  .slice(0)
+                  .reverse()
+                  .map((play, idx) => (
+                    <Row key={idx}>
+                      <Cell>{play.about.periodTimeRemaining}</Cell>
+                      <Cell>{play.result.event}</Cell>
+                      <Cell>{play.result.description}</Cell>
+                    </Row>
+                  ))}
+              </Body>
+              <Body></Body>
+            </Table>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default EventsView;

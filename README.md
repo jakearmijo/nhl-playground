@@ -16,7 +16,7 @@ Offical start date of this project was 3-8-2021.
   <li> $ npm start</li> 
 </ul>
 
-Visit localhost:3000 to view and enjoy!
+Visit [http://localhost:3000] to view and enjoy!
 
 ## Available Scripts
 

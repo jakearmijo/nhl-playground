@@ -2,11 +2,10 @@ import styled from 'styled-components'
 import {
   zdSpacingXs,
   zdSpacingXxs,
-  zdColorGrey100,
 } from '@zendeskgarden/css-variables'
 import { Table, Row } from '@zendeskgarden/react-tables'
 
-const { Row: _Row } = Row
+
 export const StandingsItemWrapper = styled(Table)`
   border-radius: ${zdSpacingXxs};
   &:nth-of-type(odd) {

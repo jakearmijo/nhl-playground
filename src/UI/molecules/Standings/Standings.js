@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import getScrollbarSize from "dom-helpers/scrollbarSize";
+import { white } from "chalk";
 import {
   Body,
   Cell,
@@ -10,8 +11,10 @@ import {
   Row,
   Table,
 } from "@zendeskgarden/react-tables";
-import { testingData } from './TestData'
-import { white } from "chalk";
+import { 
+  StyledH2,
+  StyledH4 
+} from './Standings.style'
 
 const SCROLLBAR_SIZE = getScrollbarSize();
 
@@ -43,8 +46,8 @@ function Standings() {
         };
         fetchData();
       }, []);
-      console.log("🚀 ~ file: Standings.js ~ line 37 ~ fetchData ~ standings", standings)
-      return (
+      console.log("🚀 ~ file: Standings.js ~ line 39 ~ fetchData ~ standings", standings)
+  return (
     <div>
       {standings === undefined ? (
         <Table style={{ minWidth: 500, maxWidth: 700, backgroundColor: white }}>
@@ -61,9 +64,9 @@ function Standings() {
         <div>
           <Table style={{ minWidth: 500 }}>
             <Head>
-              <HeaderRow>
-                standingsType
-              </HeaderRow>
+              <StyledH2>
+              {standings.standings[0].standingsType} Standings
+              </StyledH2>
             </Head>
           </Table>
           <div style={{ maxHeight: 500, overflowY: "auto" }}>
@@ -71,12 +74,10 @@ function Standings() {
               <Body>
                 {standings.standings
                   .map((team, idx) => (
-                    <div>
+                    <div key={idx}>
                     <Head>
-                      <HeaderRow>
-                        <HeaderCell>{team.division.name}</HeaderCell>
+                        <StyledH4>{team.division.name}</StyledH4>
                         <StyledSpacerCell aria-hidden />
-                      </HeaderRow>
                     </Head>
                     <Head>
                       <HeaderRow>
@@ -96,7 +97,6 @@ function Standings() {
                     </div>
                   ))}
               </Body>
-              <Body></Body>
             </Table>
           </div>
         </div>

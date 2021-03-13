@@ -11,7 +11,7 @@ const DetailButton = () => (
   <>
     <Row>
       <Col textAlign="center">
-        <Button isStretched>Play by Play</Button>
+        <Button isStretched>Update - Play by Play</Button>
       </Col>
     </Row>
     {/* <StyledRow>

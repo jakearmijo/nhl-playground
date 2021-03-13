@@ -87,7 +87,7 @@ function EventsView(props) {
             <Head>
               <HeaderRow>
                 <HeaderCell>Time:</HeaderCell>
-                <HeaderCell>EventTypeId</HeaderCell>
+                <HeaderCell>Event</HeaderCell>
                 <HeaderCell>Description</HeaderCell>
                 <StyledSpacerCell aria-hidden />
               </HeaderRow>

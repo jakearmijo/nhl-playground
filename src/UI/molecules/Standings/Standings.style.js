@@ -4,8 +4,7 @@ import {
   zdSpacingXxs,
   zdColorGrey100,
 } from '@zendeskgarden/css-variables'
-import { Row } from '@zendeskgarden/react-forms'
-import { Table } from '@zendeskgarden/react-grid'
+import { Table, Row } from '@zendeskgarden/react-tables'
 
 const { Row: _Row } = Row
 export const StandingsItemWrapper = styled(Table)`
@@ -27,4 +26,20 @@ export const StandingsTile = styled(Row)`
   display: flex;
   flex-direction: column;
   background-color: white;
+`
+export const StyledH2 = styled.h2`
+font-size: 36px;
+font-weight: bold;
+justify-content: left;
+float: left;
+`
+
+export const StyledH4 = styled.h4`
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
 `

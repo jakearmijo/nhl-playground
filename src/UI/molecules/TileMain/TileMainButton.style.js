@@ -7,12 +7,7 @@ import EventsView from "../EventsView";
 import {
   zdSpacingXs,
   zdSpacingXxs,
-  zdLineHeightLg,
-  zdColorGrey100,
   zdColorGrey200,
-  zdColorGrey400,
-  zdColorGrey600,
-  zdFontSizeXs,
 } from "@zendeskgarden/css-variables";
 
 const { Tile: _Tile } = Tiles;
@@ -28,6 +23,12 @@ export const GameListItemWrapper = styled(Col)`
   &:nth-of-type(even) {
     padding-left: 2px;
   }
+  &:nth-of-type(even) {
+    padding-top: 2px;
+  }
+  &:nth-of-type(even) {
+    padding-bottom: 2px;
+  }
   ${({ isInherited }) => isInherited && `opacity: 0.4;`}
 `;
 export const GameTile = styled(_Tile)`
@@ -41,18 +42,18 @@ export const GameTile = styled(_Tile)`
       selected
         ? `
         background-color: ${zdColorGrey200}!important;
-        border-color: ${zdColorGrey400}!important;
+        border-color: ${zdColorGrey200}!important;
       `
         : `
-        background-color: ${zdColorGrey100}!important;
-        border-color: ${zdColorGrey400}!important;
+        background-color: ${zdColorGrey200}!important;
+        border-color: ${zdColorGrey200}!important;
       `}
   }
   ${({ selected }) =>
     selected &&
     `
     background-color: ${zdColorGrey200}!important;
-    border-color: ${zdColorGrey400}!important;
+    border-color: ${zdColorGrey200}!important;
   `}
 `;
 

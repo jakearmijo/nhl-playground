@@ -21,8 +21,9 @@ const StyledSpacerCell = styled(HeaderCell)`
   width: ${SCROLLBAR_SIZE}px;
 `;
 function EventsView(props) {
+  
   const [liveGame, setState] = useState();
-
+  
   useEffect(() => {
     const fetchData = async () => {
       await fetch(
@@ -34,6 +35,7 @@ function EventsView(props) {
             setState({
               liveGame: result.liveData.plays.allPlays,
             });
+              console.log("🚀 ~ file: EventsView.js ~ line 38 ~ fetchData ~ liveGame", liveGame)
           },
           (error) => {
             setState({

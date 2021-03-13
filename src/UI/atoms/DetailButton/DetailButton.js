@@ -7,11 +7,11 @@ import { Button } from "@zendeskgarden/react-buttons";
 //   margin-top: ${(p) => p.theme.space.md};
 // `;
 
-const DetailButton = () => (
+const DetailButton = (props) => (
   <>
     <Row>
       <Col textAlign="center">
-        <Button isStretched>Play by Play</Button>
+        <Button onClick={props.handleClick} isStretched>Update - Play by Play</Button>
       </Col>
     </Row>
     {/* <StyledRow>

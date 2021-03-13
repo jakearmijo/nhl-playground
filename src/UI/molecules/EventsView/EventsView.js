@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import getScrollbarSize from "dom-helpers/scrollbarSize";
 import {
@@ -21,10 +21,9 @@ const StyledSpacerCell = styled(HeaderCell)`
   width: ${SCROLLBAR_SIZE}px;
 `;
 function EventsView(props) {
-  console.log("🚀 ~ file: EventsView.js ~ line 26 ~ EventsView ~ props", props);
-
+  
   const [liveGame, setState] = useState();
-
+  
   useEffect(() => {
     const fetchData = async () => {
       await fetch(
@@ -36,6 +35,7 @@ function EventsView(props) {
             setState({
               liveGame: result.liveData.plays.allPlays,
             });
+              console.log("🚀 ~ file: EventsView.js ~ line 38 ~ fetchData ~ liveGame", liveGame)
           },
           (error) => {
             setState({
@@ -45,7 +45,7 @@ function EventsView(props) {
         );
     };
     fetchData();
-  }, []);
+  }, [props.gamePk]);
 
   return (
     <div style={{ overflowX: "auto" }}>
@@ -62,7 +62,7 @@ function EventsView(props) {
         </Table>
       ) : (
         <div>
-          <DetailButton />
+          <DetailButton onLick={useEffect} />
           <Table style={{ minWidth: 500 }}>
             <Head>
               <HeaderRow>

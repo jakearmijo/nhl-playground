@@ -8,7 +8,7 @@ I set out to create something with that memory. I found the NHL API(https://stat
 
 Offical start date of this project was 3-8-2021.
 
-## Follow the process below to play along
+## Follow the process below to use the app
 <ul>
   <li> $ git clone https://github.com/jakearmijo/nhl-playground.git</li> 
   <li> $ cd nhl-playground</li> 

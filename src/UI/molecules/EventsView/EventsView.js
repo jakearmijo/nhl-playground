@@ -60,7 +60,7 @@ function EventsView(props) {
         </Table>
       ) : (
         <div>
-          <DetailButton />
+          <DetailButton onLick={useEffect} />
           <Table style={{ minWidth: 500 }}>
             <Head>
               <HeaderRow>

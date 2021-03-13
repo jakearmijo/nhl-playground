@@ -58,6 +58,14 @@ export const GameTile = styled(_Tile)`
   `}
 `;
 
+export const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+`;
+
+
 export const StyledTiledMain = ({ gameData }) => (
   <GameTile name="game">
     <Row>
@@ -70,9 +78,9 @@ export const StyledTiledMain = ({ gameData }) => (
             <div>
               <Tiles.Label>{game.status.detailedState}</Tiles.Label>
               <Tiles.Label>
-                <div>
+                <StyledDiv>
                   <TeamName teamData={game.teams.away}/> VS <TeamName teamData={game.teams.home}/>
-                </div>
+                </StyledDiv>
               </Tiles.Label>
               <Tiles.Label>
                 {game.teams.away.score} - {game.teams.home.score}

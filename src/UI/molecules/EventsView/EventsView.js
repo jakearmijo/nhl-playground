@@ -35,7 +35,6 @@ function EventsView(props) {
             setState({
               liveGame: result.liveData.plays.allPlays,
             });
-              console.log("🚀 ~ file: EventsView.js ~ line 38 ~ fetchData ~ liveGame", liveGame)
           },
           (error) => {
             setState({

@@ -11,7 +11,7 @@ Offical start date of this project was 3-8-2021.
 ## Follow the process below to use the app
 <ul>
   <li> $ git clone https://github.com/jakearmijo/nhl-playground.git</li> 
-  <li> $ cd nhl-playground</li> 
+  <li> $ cd todays-tilts</li> 
   <li> $ npm install</li> 
   <li> $ npm start</li> 
 </ul>

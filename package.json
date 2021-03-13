@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
+    "@zendeskgarden/css-variables": "^6.4.5",
     "@zendeskgarden/react-buttons": "^8.32.2",
     "@zendeskgarden/react-forms": "^8.32.2",
     "@zendeskgarden/react-grid": "^8.32.2",

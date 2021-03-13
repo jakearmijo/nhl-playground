@@ -1,7 +1,6 @@
 import logo from "./assests/NHL_Logo_former.svg";
-import "./App.css";
+import "./assests/App.css";
 import TileMainButton from "./UI/molecules/TileMain";
-
 
 function App() {
   return (
@@ -9,8 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Today's Tilts.</p>
-        <TileMainButton>
-        </TileMainButton>
+        <TileMainButton></TileMainButton>
         <a
           className="App-link"
           href="https://www.nhl.com"

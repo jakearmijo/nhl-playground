@@ -105,7 +105,9 @@ export const StyledTiledMain = ({ gameData }) => (
               </div>
               <Tiles.Label>
                 <StyledDiv>
-                  <TeamName teamData={game.teams.away}/> VS <TeamName teamData={game.teams.home}/>
+                  <TeamName teamData={game.teams.away}/>
+                  VS
+                  <TeamName teamData={game.teams.home}/>
                 </StyledDiv>
               </Tiles.Label>
               <Tiles.Label>

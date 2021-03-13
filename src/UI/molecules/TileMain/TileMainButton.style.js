@@ -70,7 +70,9 @@ export const StyledTiledMain = ({ gameData }) => (
             <div>
               <Tiles.Label>{game.status.detailedState}</Tiles.Label>
               <Tiles.Label>
-                <TeamName teamName={game.teams.away.team.name}/> VS <TeamName teamName={game.teams.home.team.name}/>
+                <div>
+                  <TeamName teamData={game.teams.away}/> VS <TeamName teamData={game.teams.home}/>
+                </div>
               </Tiles.Label>
               <Tiles.Label>
                 {game.teams.away.score} - {game.teams.home.score}

@@ -9,6 +9,7 @@ import {
   zdSpacingXxs,
   zdColorGrey200,
 } from "@zendeskgarden/css-variables";
+import TeamName from '../../atoms/TeamName'
 
 const { Tile: _Tile } = Tiles;
 
@@ -69,7 +70,7 @@ export const StyledTiledMain = ({ gameData }) => (
             <div>
               <Tiles.Label>{game.status.detailedState}</Tiles.Label>
               <Tiles.Label>
-                {game.teams.away.team.name} VS {game.teams.home.team.name}
+                <TeamName teamName={game.teams.away.team.name}/> VS <TeamName teamName={game.teams.home.team.name}/>
               </Tiles.Label>
               <Tiles.Label>
                 {game.teams.away.score} - {game.teams.home.score}

@@ -1,9 +1,7 @@
 import React from 'react';
-import { Row, Col } from '@zendeskgarden/react-grid';
+import { Row } from '@zendeskgarden/react-grid';
 import { Code } from '@zendeskgarden/react-typography';
 import { StyledCol } from './TeamName.style'
-
-const { Code: _Code } = Code;
 const color = 'grey' | 'red' | 'green' | 'yellow'
 
 const TeamName = (props) => {

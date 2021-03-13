@@ -65,6 +65,27 @@ export const StyledDiv = styled.div`
   justify-content: center;
 `;
 
+export const StyledGameNumber = styled.h4`
+  display: block;
+  float: left;
+  font-size: .45em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 1em;
+  font-weight: bold;
+`
+export const StyledHeader = styled.h4`
+  display: block;
+  align-content: center;
+  justify-content: center;
+  font-size: .5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 1em;
+  font-weight: bold;
+`
 
 export const StyledTiledMain = ({ gameData }) => (
   <GameTile name="game">
@@ -73,10 +94,15 @@ export const StyledTiledMain = ({ gameData }) => (
         <GameListItemWrapper sm={4} key={idx}>
           <Tiles.Tile name='game' value="game">
             <div>
-              <Tiles.Icon>Game #{idx + 1}</Tiles.Icon>
+              <StyledGameNumber>Game {idx + 1}</StyledGameNumber>
             </div>
+            {/* <div>
+              <Tiles.Icon>Game {idx + 1}</Tiles.Icon>
+            </div> */}
             <div>
-              <Tiles.Label>{game.status.detailedState}</Tiles.Label>
+              <div>
+                <StyledHeader>{game.status.detailedState}</StyledHeader>
+              </div>
               <Tiles.Label>
                 <StyledDiv>
                   <TeamName teamData={game.teams.away}/> VS <TeamName teamData={game.teams.home}/>

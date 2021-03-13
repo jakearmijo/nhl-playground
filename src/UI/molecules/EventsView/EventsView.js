@@ -46,6 +46,27 @@ function EventsView(props) {
     fetchData();
   }, [props.gamePk]);
 
+  function handleClick(e) {
+    e.preventDefault();
+    fetch(
+      `https://statsapi.web.nhl.com/api/v1/game/${props.gamePk}/feed/live`
+      )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setState({
+            liveGame: result.liveData.plays.allPlays,
+          });
+        },
+        (error) => {
+          setState({
+            error,
+          });
+        }
+        );
+        console.log(`Updating Play by Play for game ID ${props.gamePk}.`);
+  }
+
   return (
     <div style={{ overflowX: "auto" }}>
       {liveGame === undefined ? (
@@ -61,7 +82,7 @@ function EventsView(props) {
         </Table>
       ) : (
         <div>
-          <DetailButton onLick={useEffect} />
+          <DetailButton handleClick={handleClick} />
           <Table style={{ minWidth: 500 }}>
             <Head>
               <HeaderRow>

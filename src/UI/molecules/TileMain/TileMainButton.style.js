@@ -67,7 +67,6 @@ export const StyledTiledMain = ({ gameData }) => (
               <Tiles.Icon>Game #{idx + 1}</Tiles.Icon>
             </div>
             <div>
-              <Tiles.Label>{game.gameDate}</Tiles.Label>
               <Tiles.Label>{game.status.detailedState}</Tiles.Label>
               <Tiles.Label>
                 {game.teams.away.team.name} VS {game.teams.home.team.name}

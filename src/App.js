@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Standings />
         <img src={logo} className="App-logo" alt="logo" />
+        <Standings />
         <TodaysTiltLogo />
         <TileMainButton></TileMainButton>
         

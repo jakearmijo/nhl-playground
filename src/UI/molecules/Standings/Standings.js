@@ -69,11 +69,11 @@ function Standings() {
               </StyledH2>
             </Head>
           </Table>
+                {standings.standings
+                  .map((team, idx) => (
           <div style={{ maxHeight: 500, overflowY: "auto" }}>
             <Table>
               <Body>
-                {standings.standings
-                  .map((team, idx) => (
                     <div key={idx}>
                     <Head>
                         <StyledH4>{team.division.name}</StyledH4>
@@ -95,10 +95,10 @@ function Standings() {
                       </Row>
                       ))}
                     </div>
-                  ))}
               </Body>
             </Table>
           </div>
+                  ))}
         </div>
       )}
                 

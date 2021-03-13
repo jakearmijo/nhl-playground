@@ -62,7 +62,7 @@ export const StyledTiledMain = ({ gameData }) => (
     <Row>
       {gameData.map((game, idx) => (
         <GameListItemWrapper sm={4} key={idx}>
-          <Tiles.Tile value="game">
+          <Tiles.Tile name='game' value="game">
             <div>
               <Tiles.Icon>Game #{idx + 1}</Tiles.Icon>
             </div>

@@ -4,39 +4,40 @@ import { Code } from '@zendeskgarden/react-typography';
 import { StyledCol } from './TeamName.style'
 
 
-let color = 'grey' | 'red' | 'green' | 'yellow'
+// let color = 'grey' | 'red' | 'green' | 'yellow'
 
 const TeamName = (props) => {
-  function checkForAway(){
+  function checkForAwayColor(){
     let awayScore = props.gameData.away.score
     let homeScore = props.gameData.home.score
     
-    if(awayScore > homeScore){
-      return 'green'
-    } else{
-      return 'grey'
-    } 
+      if(awayScore > homeScore){
+        return 'green'
+      } else{
+        return 'grey'
+      } 
   }
-  function checkForHome(){
+
+  function checkForHomeColor(){
     let awayScore = props.gameData.away.score
     let homeScore = props.gameData.home.score
     
-    if(homeScore > awayScore){
-      return 'green'
-    } else{
-      return 'grey'
-    } 
+      if(homeScore > awayScore){
+        return 'green'
+      } else{
+        return 'grey'
+      } 
   }
-  console.log("🚀 ~ file: TeamName.js ~ line 11 ~ props", props.gameData)
+
   return (
   <Row>
     {/* <Col sm={4} textAlign="center">
       <Code hue="green">Veggies es bonus</Code>
     </Col> */}
     <StyledCol sm={2} textAlign="center">
-      <Code hue={checkForAway()}>{props.gameData.away.team.name}</Code>
+      <Code hue={checkForAwayColor()}>{props.gameData.away.team.name}</Code>
       vs
-      <Code hue={checkForHome()}>{props.gameData.home.team.name}</Code>
+      <Code hue={checkForHomeColor()}>{props.gameData.home.team.name}</Code>
     </StyledCol>
   </Row>
   )

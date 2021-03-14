@@ -1,6 +1,6 @@
 
 
-# Getting Started with my NHL-Playground
+# Getting Started with Today's Tilts
 
 HELLO!!!!! and Welcome to my NHL-Playground. I am Jake Armijo the creator. I always enjoyed listening to the hockey games on the radio with my dad. During the 90's and early 2000's the Chicago Blackhawks were NOT broadcasted on TV. Therefore my father and I would listen to the games on this tiny black handheld radio. I can still picture this thing in my head. 
 

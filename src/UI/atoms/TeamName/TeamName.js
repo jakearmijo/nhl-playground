@@ -7,15 +7,25 @@ import { StyledCol } from './TeamName.style'
 let color = 'grey' | 'red' | 'green' | 'yellow'
 
 const TeamName = (props) => {
-  function checkForWinner(){
+  function checkForAway(){
     let awayScore = props.gameData.away.score
     let homeScore = props.gameData.home.score
     
     if(awayScore > homeScore){
       return 'green'
-    } else if (homeScore > awayScore){
+    } else{
+      return 'grey'
+    } 
+  }
+  function checkForHome(){
+    let awayScore = props.gameData.away.score
+    let homeScore = props.gameData.home.score
+    
+    if(homeScore > awayScore){
       return 'green'
-    }
+    } else{
+      return 'grey'
+    } 
   }
   console.log("🚀 ~ file: TeamName.js ~ line 11 ~ props", props.gameData)
   return (
@@ -24,9 +34,9 @@ const TeamName = (props) => {
       <Code hue="green">Veggies es bonus</Code>
     </Col> */}
     <StyledCol sm={2} textAlign="center">
-      <Code hue={checkForWinner()}>{props.gameData.away.team.name}</Code>
+      <Code hue={checkForAway()}>{props.gameData.away.team.name}</Code>
       vs
-      <Code hue={checkForWinner()}>{props.gameData.home.team.name}</Code>
+      <Code hue={checkForHome()}>{props.gameData.home.team.name}</Code>
     </StyledCol>
   </Row>
   )

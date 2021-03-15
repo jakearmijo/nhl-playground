@@ -34,7 +34,7 @@ const TeamName = (props) => {
     {/* <Col sm={4} textAlign="center">
       <Code hue="green">Veggies es bonus</Code>
     </Col> */}
-    <StyledCol sm={2} textAlign="center">
+    <StyledCol textAlign="center">
       <Code hue={checkForAwayColor()}>{props.gameData.away.team.name}</Code>
       vs
       <Code hue={checkForHomeColor()}>{props.gameData.home.team.name}</Code>

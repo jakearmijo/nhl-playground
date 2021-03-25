@@ -11,7 +11,6 @@ export default class TileMainButton extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => 
     fetch("https://statsapi.web.nhl.com/api/v1/schedule")
       .then((res) => res.json())
       .then(
@@ -27,11 +26,8 @@ export default class TileMainButton extends Component {
             error,
           });
         }
-      ), 1);
+      );
   }
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  } 
 
   render() {
     const { error, isLoaded, gameData } = this.state;

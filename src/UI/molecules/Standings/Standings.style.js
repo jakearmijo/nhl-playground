@@ -42,3 +42,12 @@ export const StyledH4 = styled.h4`
   margin-right: 0;
   font-weight: bold;
 `
+
+export const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+export const StyledDivContainer = styled.div`
+  display: flex;
+`

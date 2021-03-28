@@ -1,6 +1,6 @@
 import logo from "./assests/NHL_Logo_former.svg";
 import "./assests/App.css";
-import TileMainButton from "./UI/molecules/TileMain";
+import TileMainButton from "./UI/organisms/TileMain";
 import Standings from './UI/molecules/Standings'
 import TodaysTiltLogo from './UI/atoms/TodaysTiltLogo'
 

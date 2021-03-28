@@ -1,15 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { mediaQuery } from "@zendeskgarden/react-theming";
-import { Row, Col } from "@zendeskgarden/react-grid";
-import { Tiles } from "@zendeskgarden/react-forms";
-import EventsView from "../EventsView";
+import EventsView from "../../molecules/EventsView";
+import StatsTable from "../../molecules/StatsTable/StatsTable";
+import TeamName from '../../atoms/TeamName'
+
 import {
   zdSpacingXs,
   zdSpacingXxs,
   zdColorGrey200,
 } from "@zendeskgarden/css-variables";
-import TeamName from '../../atoms/TeamName'
+import { mediaQuery } from "@zendeskgarden/react-theming";
+import { Row, Col } from "@zendeskgarden/react-grid";
+import { Tiles } from "@zendeskgarden/react-forms";
 
 const { Tile: _Tile } = Tiles;
 
@@ -93,12 +95,12 @@ export const StyledTiledMain = ({ gameData }) => (
       {gameData.map((game, idx) => (
         <GameListItemWrapper sm={4} key={idx}>
           <Tiles.Tile name='game' value="game">
-            <div>
-              <StyledGameNumber>Game {idx + 1}</StyledGameNumber>
-            </div>
             {/* <div>
-              <Tiles.Icon>Game {idx + 1}</Tiles.Icon>
+              <StyledGameNumber>Game {idx + 1}</StyledGameNumber>
             </div> */}
+            <div>
+              <Tiles.Icon>Game {idx + 1}</Tiles.Icon>
+            </div>
             <div>
               <div>
                 <StyledHeader>{game.status.detailedState}</StyledHeader>
@@ -112,6 +114,7 @@ export const StyledTiledMain = ({ gameData }) => (
                 {game.teams.away.score} - {game.teams.home.score}
               </Tiles.Label>
             </div>
+            <StatsTable gamePk={game.gamePk}/>
             <EventsView gamePk={game.gamePk}></EventsView>
           </Tiles.Tile>
         </GameListItemWrapper>

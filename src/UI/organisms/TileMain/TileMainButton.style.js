@@ -32,15 +32,16 @@ export const GameListItemWrapper = styled(Col)`
   &:nth-of-type(even) {
     padding-bottom: 2px;
   }
-  ${({ isInherited }) => isInherited && `opacity: 0.4;`}
-`;
+  /* ${({ isInherited }) => isInherited && `opacity: 0.4;`} */
+  `;
+    
 export const GameTile = styled(_Tile)`
   min-height: 60px;
   padding: ${zdSpacingXs};
   margin-bottom: ${zdSpacingXxs};
   display: flex;
   flex-direction: column;
-  &:hover {
+  /* &:hover {
     ${({ selected }) =>
       selected
         ? `
@@ -51,13 +52,13 @@ export const GameTile = styled(_Tile)`
         background-color: ${zdColorGrey200}!important;
         border-color: ${zdColorGrey200}!important;
       `}
-  }
-  ${({ selected }) =>
+  } */
+  /* ${({ selected }) =>
     selected &&
     `
     background-color: ${zdColorGrey200}!important;
     border-color: ${zdColorGrey200}!important;
-  `}
+  `} */
 `;
 
 export const StyledDiv = styled.div`

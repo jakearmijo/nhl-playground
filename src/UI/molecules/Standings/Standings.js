@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import getScrollbarSize from "dom-helpers/scrollbarSize";
-import { white } from "chalk";
 import {
   Body,
   Cell,
@@ -68,8 +67,7 @@ function Standings() {
           <StyledDiv style={{ maxHeight: 500, overflowY: "auto" }} key={idx}>
             <Table>
               <Body>
-                    <div key={idx}>
-                    <Head>
+                    <Head  key={idx}>
                         <StyledH4>{team.division.name}</StyledH4>
                         <StyledSpacerCell aria-hidden />
                     </Head>
@@ -88,7 +86,6 @@ function Standings() {
                         <Cell>{teamRank.points}</Cell>
                       </Row>
                       ))}
-                    </div>
               </Body>
             </Table>
           </StyledDiv>

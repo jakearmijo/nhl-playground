@@ -34,48 +34,48 @@ export default function StatsTable( { gamePk } ) {
     const homeStats = liveGame.liveGame.boxscore.teams.home.teamStats.teamSkaterStats
       return (
       <div>
-        <StatsGrid class="grid-container">
-          <StatsGridItemHeading class="grid-item">TEAM</StatsGridItemHeading>
-          <StatsGridItemHeading class="grid-item">SoG</StatsGridItemHeading>  
-          <StatsGridItemHeading class="grid-item">FO%</StatsGridItemHeading>
-          <StatsGridItemHeading class="grid-item">PP%</StatsGridItemHeading>
-          <StatsGridItemHeading class="grid-item">PIM</StatsGridItemHeading>  
-          <StatsGridItemHeading class="grid-item">Hits</StatsGridItemHeading>
-          <StatsGridItemHeading class="grid-item">Blks</StatsGridItemHeading>
-          <StatsGridItemHeading class="grid-item">GA's</StatsGridItemHeading>  
-          <StatsGridItemHeading class="grid-item">TA's</StatsGridItemHeading>
+        <StatsGrid className="grid-container">
+          <StatsGridItemHeading className="grid-item">TEAM</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">SoG</StatsGridItemHeading>  
+          <StatsGridItemHeading className="grid-item">FO%</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">PP%</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">PIM</StatsGridItemHeading>  
+          <StatsGridItemHeading className="grid-item">Hits</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">Blks</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">GA's</StatsGridItemHeading>  
+          <StatsGridItemHeading className="grid-item">TA's</StatsGridItemHeading>
         
         
-          <StatsGridItem class="grid-item">{homeTeam}</StatsGridItem>
-          <StatsGridItem class="grid-item">{homeStats.shots}</StatsGridItem>  
-          <StatsGridItem class="grid-item">{homeStats.faceOffWinPercentage}</StatsGridItem>
-          <StatsGridItem class="grid-item">{homeStats.powerPlayPercentage}</StatsGridItem>
-          <StatsGridItem class="grid-item">{homeStats.pim}</StatsGridItem>  
-          <StatsGridItem class="grid-item">{homeStats.hits}</StatsGridItem>
-          <StatsGridItem class="grid-item">{homeStats.blocked}</StatsGridItem>
-          <StatsGridItem class="grid-item">{homeStats.giveaways}</StatsGridItem>  
-          <StatsGridItem class="grid-item">{homeStats.takeaways}</StatsGridItem>
+          <StatsGridItem className="grid-item">{homeTeam}</StatsGridItem>
+          <StatsGridItem className="grid-item">{homeStats.shots}</StatsGridItem>  
+          <StatsGridItem className="grid-item">{homeStats.faceOffWinPercentage}</StatsGridItem>
+          <StatsGridItem className="grid-item">{homeStats.powerPlayPercentage}</StatsGridItem>
+          <StatsGridItem className="grid-item">{homeStats.pim}</StatsGridItem>  
+          <StatsGridItem className="grid-item">{homeStats.hits}</StatsGridItem>
+          <StatsGridItem className="grid-item">{homeStats.blocked}</StatsGridItem>
+          <StatsGridItem className="grid-item">{homeStats.giveaways}</StatsGridItem>  
+          <StatsGridItem className="grid-item">{homeStats.takeaways}</StatsGridItem>
         
         
-          <StatsGridItem class="grid-item">{awayTeam}</StatsGridItem>
-          <StatsGridItem class="grid-item">{awayStats.shots}</StatsGridItem>  
-          <StatsGridItem class="grid-item">{awayStats.faceOffWinPercentage}</StatsGridItem>
-          <StatsGridItem class="grid-item">{awayStats.powerPlayPercentage}</StatsGridItem>
-          <StatsGridItem class="grid-item">{awayStats.pim}</StatsGridItem>  
-          <StatsGridItem class="grid-item">{awayStats.hits}</StatsGridItem>
-          <StatsGridItem class="grid-item">{awayStats.blocked}</StatsGridItem>
-          <StatsGridItem class="grid-item">{awayStats.giveaways}</StatsGridItem>  
-          <StatsGridItem class="grid-item">{awayStats.takeaways}</StatsGridItem>
+          <StatsGridItem className="grid-item">{awayTeam}</StatsGridItem>
+          <StatsGridItem className="grid-item">{awayStats.shots}</StatsGridItem>  
+          <StatsGridItem className="grid-item">{awayStats.faceOffWinPercentage}</StatsGridItem>
+          <StatsGridItem className="grid-item">{awayStats.powerPlayPercentage}</StatsGridItem>
+          <StatsGridItem className="grid-item">{awayStats.pim}</StatsGridItem>  
+          <StatsGridItem className="grid-item">{awayStats.hits}</StatsGridItem>
+          <StatsGridItem className="grid-item">{awayStats.blocked}</StatsGridItem>
+          <StatsGridItem className="grid-item">{awayStats.giveaways}</StatsGridItem>  
+          <StatsGridItem className="grid-item">{awayStats.takeaways}</StatsGridItem>
 
-          <StatsGridItemHeading class="grid-item">TOTALS</StatsGridItemHeading>
-          <StatsGridItemHeading class="grid-item">{awayStats.shots + homeStats.shots}</StatsGridItemHeading>  
-          <StatsGridItemHeading class="grid-item">{awayStats.faceOffWinPercentage + homeStats.faceOffWinPercentage}</StatsGridItemHeading>
-          <StatsGridItemHeading class="grid-item">{awayStats.powerPlayPercentage + homeStats.powerPlayPercentage}</StatsGridItemHeading>
-          <StatsGridItemHeading class="grid-item">{awayStats.pim + homeStats.pim}</StatsGridItemHeading>  
-          <StatsGridItemHeading class="grid-item">{awayStats.hits + homeStats.hits}</StatsGridItemHeading>
-          <StatsGridItemHeading class="grid-item">{awayStats.blocked + homeStats.blocked}</StatsGridItemHeading>
-          <StatsGridItemHeading class="grid-item">{awayStats.giveaways + homeStats.giveaways}</StatsGridItemHeading>  
-          <StatsGridItemHeading class="grid-item">{awayStats.takeaways + homeStats.takeaways}</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">TOTALS</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">{awayStats.shots + homeStats.shots}</StatsGridItemHeading>  
+          <StatsGridItemHeading className="grid-item">{awayStats.faceOffWinPercentage + homeStats.faceOffWinPercentage}</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">{awayStats.powerPlayPercentage + homeStats.powerPlayPercentage}</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">{awayStats.pim + homeStats.pim}</StatsGridItemHeading>  
+          <StatsGridItemHeading className="grid-item">{awayStats.hits + homeStats.hits}</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">{awayStats.blocked + homeStats.blocked}</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">{awayStats.giveaways + homeStats.giveaways}</StatsGridItemHeading>  
+          <StatsGridItemHeading className="grid-item">{awayStats.takeaways + homeStats.takeaways}</StatsGridItemHeading>
         </StatsGrid>
       </div>
       )

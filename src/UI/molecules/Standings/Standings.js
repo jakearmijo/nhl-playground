@@ -13,7 +13,9 @@ import {
 } from "@zendeskgarden/react-tables";
 import { 
   StyledH2,
-  StyledH4 
+  StyledH4,
+  StyledDiv,
+  StyledDivContainer,
 } from './Standings.style'
 
 const SCROLLBAR_SIZE = getScrollbarSize();
@@ -61,17 +63,17 @@ function Standings() {
           </Head>
         </Table>
       ) : (
-        <div>
-          <Table style={{ minWidth: 500 }}>
+        <StyledDivContainer>
             <Head>
               <StyledH2>
               {standings.standings[0].standingsType} Standings
               </StyledH2>
             </Head>
+          <Table style={{ minWidth: 500 }}>
           </Table>
                 {standings.standings
                   .map((team, idx) => (
-          <div style={{ maxHeight: 500, overflowY: "auto" }}>
+          <StyledDiv style={{ maxHeight: 500, overflowY: "auto" }}>
             <Table>
               <Body>
                     <div key={idx}>
@@ -97,9 +99,9 @@ function Standings() {
                     </div>
               </Body>
             </Table>
-          </div>
+          </StyledDiv>
                   ))}
-        </div>
+        </StyledDivContainer>
       )}
                 
     </div>

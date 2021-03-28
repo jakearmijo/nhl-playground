@@ -12,6 +12,15 @@ export const StatsGrid = styled.div`
 export const StatsGridItem = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 2px;
-  font-size: 15px;
+  font-size: 12px;
   text-align: center;
 `
+export const StatsGridItemHeading = styled.div`
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+`
+
+

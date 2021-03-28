@@ -114,7 +114,7 @@ export const StyledTiledMain = ({ gameData }) => (
                 {game.teams.away.score} - {game.teams.home.score}
               </Tiles.Label>
             </div>
-            <StatsTable/>
+            <StatsTable gamePk={game.gamePk}/>
             <EventsView gamePk={game.gamePk}></EventsView>
           </Tiles.Tile>
         </GameListItemWrapper>

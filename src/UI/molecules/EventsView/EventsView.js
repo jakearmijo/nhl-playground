@@ -20,14 +20,14 @@ const StyledSpacerCell = styled(HeaderCell)`
   padding: 0;
   width: ${SCROLLBAR_SIZE}px;
 `;
-function EventsView(props) {
+function EventsView( { gamePk } ) {
   
   const [liveGame, setState] = useState();
   
   useEffect(() => {
     const fetchData = async () => {
       await fetch(
-        `https://statsapi.web.nhl.com/api/v1/game/${props.gamePk}/feed/live`
+        `https://statsapi.web.nhl.com/api/v1/game/${gamePk}/feed/live`
       )
         .then((res) => res.json())
         .then(
@@ -44,12 +44,12 @@ function EventsView(props) {
         );
     };
     fetchData();
-  }, [props.gamePk]);
+  }, [gamePk]);
 
   function handleClick(e) {
     e.preventDefault();
     fetch(
-      `https://statsapi.web.nhl.com/api/v1/game/${props.gamePk}/feed/live`
+      `https://statsapi.web.nhl.com/api/v1/game/${gamePk}/feed/live`
       )
       .then((res) => res.json())
       .then(
@@ -64,7 +64,7 @@ function EventsView(props) {
           });
         }
         );
-        console.log(`Updating Play by Play for game ID ${props.gamePk}.`);
+        console.log(`Updating Play by Play for game ID ${gamePk}.`);
   }
 
   return (

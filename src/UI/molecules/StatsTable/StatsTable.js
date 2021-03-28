@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { StatsGrid, StatsGridItem, StatsGridItemHeading } from './StatsTable.style'
 
 export default function StatsTable( { gamePk } ) {
-console.log("🚀 ~ file: StatsTable.js ~ line 5 ~ StatsTable ~ game", gamePk)
-
   const [liveGame, setGame] = useState();
   
   useEffect(() => {
@@ -29,9 +27,7 @@ console.log("🚀 ~ file: StatsTable.js ~ line 5 ~ StatsTable ~ game", gamePk)
   }, [gamePk]);
           
 
-  if(liveGame) {
-    console.log("🚀 ~ file: StatsTable.js ~ line 19 ~ fetchData ~ liveGame", liveGame.liveGame.boxscore.teams)
-    // console.log("🚀 ~ file: StatsTable.js ~ line 19 ~ fetchData ~ liveGame", liveGame.boxscore.teams.away.teamStats)
+  if( liveGame ) {
     const awayStats = liveGame.liveGame.boxscore.teams.away.teamStats.teamSkaterStats
     const awayTeam = liveGame.liveGame.boxscore.teams.away.team.name
     const homeTeam = liveGame.liveGame.boxscore.teams.home.team.name

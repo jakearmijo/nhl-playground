@@ -48,7 +48,7 @@ function Standings() {
         };
         fetchData();
       }, []);
-      console.log("🚀 ~ file: Standings.js ~ line 39 ~ fetchData ~ standings", standings)
+      
   return (
     <div>
       {standings === undefined ? (

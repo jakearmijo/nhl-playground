@@ -69,8 +69,8 @@ export default function StatsTable( { gamePk } ) {
 
           <StatsGridItemHeading className="grid-item">TOTALS</StatsGridItemHeading>
           <StatsGridItemHeading className="grid-item">{awayStats.shots + homeStats.shots}</StatsGridItemHeading>  
-          <StatsGridItemHeading className="grid-item">{awayStats.faceOffWinPercentage + homeStats.faceOffWinPercentage}</StatsGridItemHeading>
-          <StatsGridItemHeading className="grid-item">{awayStats.powerPlayPercentage + homeStats.powerPlayPercentage}</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">%</StatsGridItemHeading>
+          <StatsGridItemHeading className="grid-item">%</StatsGridItemHeading>
           <StatsGridItemHeading className="grid-item">{awayStats.pim + homeStats.pim}</StatsGridItemHeading>  
           <StatsGridItemHeading className="grid-item">{awayStats.hits + homeStats.hits}</StatsGridItemHeading>
           <StatsGridItemHeading className="grid-item">{awayStats.blocked + homeStats.blocked}</StatsGridItemHeading>

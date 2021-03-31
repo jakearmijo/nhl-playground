@@ -105,10 +105,11 @@ export const StyledTiledMain = ({ gameData }) => (
             <div>
               <div>
                 <StyledHeader>{game.status.detailedState}</StyledHeader>
+                <StyledHeader>@ {game.venue.name}</StyledHeader>
               </div>
               <Tiles.Label>
                 <StyledDiv>
-                  <TeamName gameData={game.teams}/>
+                  <TeamName game={game}/>
                 </StyledDiv>
               </Tiles.Label>
               <Tiles.Label>

@@ -11,6 +11,7 @@ import {
   Table,
 } from "@zendeskgarden/react-tables";
 import DetailButton from "../../atoms/DetailButton";
+import { ensureObject } from '../../../lib'
 
 import { white } from "chalk";
 
@@ -20,10 +21,10 @@ const StyledSpacerCell = styled(HeaderCell)`
   padding: 0;
   width: ${SCROLLBAR_SIZE}px;
 `;
-function EventsView( { gamePk } ) {
+function EventsView( props ) {
   
   const [liveGame, setState] = useState();
-  
+  const { gamePk } = props.game
   useEffect(() => {
     const fetchData = async () => {
       await fetch(
@@ -55,7 +56,7 @@ function EventsView( { gamePk } ) {
       .then(
         (result) => {
           setState({
-            liveGame: result.liveData.plays.allPlays,
+            liveGame: ensureObject(result.liveData.plays.allPlays),
           });
         },
         (error) => {

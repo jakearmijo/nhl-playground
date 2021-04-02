@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { StatsGrid, StatsGridItem, StatsGridItemHeading } from './StatsTable.style'
+import { 
+  StatsGrid, 
+  StatsGridItem, 
+  StatsGridItemHeading } from './StatsTable.style'
+  import { ensureObject } from '../../../lib'
 
-export default function StatsTable( { gamePk } ) {
-  const [liveGame, setGame] = useState();
-  
+export default function StatsTable( props ) {
+  const { game } = props
+  const { gamePk } = game
+  const [liveGame, setGame] = useState()
   useEffect(() => {
     const fetchData = async () => {
       await fetch(
@@ -13,7 +18,8 @@ export default function StatsTable( { gamePk } ) {
         .then(
           (result) => {
             setGame({
-              liveGame: result.liveData,
+              liveGame: ensureObject(result.liveData),
+              
             });
           },
           (error) => {
@@ -24,8 +30,8 @@ export default function StatsTable( { gamePk } ) {
         );
     };
     fetchData();
-  }, [gamePk]);
-          
+  }, [game]);
+  
 
   if( liveGame ) {
     const awayStats = liveGame.liveGame.boxscore.teams.away.teamStats.teamSkaterStats

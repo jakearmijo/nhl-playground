@@ -3,11 +3,28 @@ import {
   StatsGrid, 
   StatsGridItem, 
   StatsGridItemHeading } from './StatsTable.style'
-  import { ensureObject } from '../../../lib'
+import AbvTeamName from '../../atoms/AbvTeamName'
+import { ensureObject } from '../../../lib'
 
 export default function StatsTable( props ) {
   const { game } = props
   const { gamePk } = game
+  const { 
+    game : { 
+      teams: {
+        away: {
+          team: {
+            id: awayId
+          }
+        },
+        home: {
+          team: {
+            id : homeId
+          }
+        }
+      } 
+    },
+  } = props; 
   const [liveGame, setGame] = useState()
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +48,10 @@ export default function StatsTable( props ) {
     };
     fetchData();
   }, [gamePk]);
+
+
+  console.log("🚀 ~ file: StatsTable.js ~ line 18 ~ StatsTable ~ awayId", awayId)  
+  console.log("🚀 ~ file: StatsTable.js ~ line 18 ~ StatsTable ~ homeId", homeId)  
   
 
   if( liveGame ) {
@@ -52,7 +73,9 @@ export default function StatsTable( props ) {
           <StatsGridItemHeading className="grid-item">TA's</StatsGridItemHeading>
         
         
-          <StatsGridItem className="grid-item">{homeTeam}</StatsGridItem>
+          <StatsGridItem className="grid-item">
+            <AbvTeamName awayId={awayId} homeId={homeId} />
+          </StatsGridItem>
           <StatsGridItem className="grid-item">{homeStats.shots}</StatsGridItem>  
           <StatsGridItem className="grid-item">{homeStats.faceOffWinPercentage}</StatsGridItem>
           <StatsGridItem className="grid-item">{homeStats.powerPlayPercentage}</StatsGridItem>

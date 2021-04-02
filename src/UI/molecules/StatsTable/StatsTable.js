@@ -30,7 +30,7 @@ export default function StatsTable( props ) {
         );
     };
     fetchData();
-  }, [game]);
+  }, [gamePk]);
   
 
   if( liveGame ) {

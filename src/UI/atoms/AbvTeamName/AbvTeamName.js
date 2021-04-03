@@ -14,7 +14,7 @@ const AbvTeamName = ( { teamId } ) => {
     .then( result => {
       setTeamAbv({ abv: result.teams[0].abbreviation })
     })
-  }, []);
+  }, [teamId]);
 
 const teamAbv = ensureObject(abv).abv
 

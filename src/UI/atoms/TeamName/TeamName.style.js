@@ -6,4 +6,5 @@ export const StyledCol = styled(Col)`
   ${p => mediaQuery('down', 'xs', p.theme)} {
     margin-top: ${p => p.theme.space};
   }
+  font-size: 1.25rem;
 `;

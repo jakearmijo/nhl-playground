@@ -36,7 +36,6 @@ export default function StatsTable( props ) {
           (result) => {
             setGame({
               liveGame: ensureObject(result.liveData),
-              
             });
           },
           (error) => {
@@ -48,16 +47,10 @@ export default function StatsTable( props ) {
     };
     fetchData();
   }, [gamePk]);
-
-
-  console.log("🚀 ~ file: StatsTable.js ~ line 18 ~ StatsTable ~ awayId", awayId)  
-  console.log("🚀 ~ file: StatsTable.js ~ line 18 ~ StatsTable ~ homeId", homeId)  
   
 
   if( liveGame ) {
     const awayStats = liveGame.liveGame.boxscore.teams.away.teamStats.teamSkaterStats
-    const awayTeam = liveGame.liveGame.boxscore.teams.away.team.name
-    const homeTeam = liveGame.liveGame.boxscore.teams.home.team.name
     const homeStats = liveGame.liveGame.boxscore.teams.home.teamStats.teamSkaterStats
       return (
       <div>
@@ -74,7 +67,7 @@ export default function StatsTable( props ) {
         
         
           <StatsGridItem className="grid-item">
-            <AbvTeamName awayId={awayId} homeId={homeId} />
+            <AbvTeamName teamId={homeId} />
           </StatsGridItem>
           <StatsGridItem className="grid-item">{homeStats.shots}</StatsGridItem>  
           <StatsGridItem className="grid-item">{homeStats.faceOffWinPercentage}</StatsGridItem>
@@ -86,7 +79,9 @@ export default function StatsTable( props ) {
           <StatsGridItem className="grid-item">{homeStats.takeaways}</StatsGridItem>
         
         
-          <StatsGridItem className="grid-item">{awayTeam}</StatsGridItem>
+          <StatsGridItem className="grid-item">
+            <AbvTeamName teamId={awayId} />
+          </StatsGridItem>
           <StatsGridItem className="grid-item">{awayStats.shots}</StatsGridItem>  
           <StatsGridItem className="grid-item">{awayStats.faceOffWinPercentage}</StatsGridItem>
           <StatsGridItem className="grid-item">{awayStats.powerPlayPercentage}</StatsGridItem>

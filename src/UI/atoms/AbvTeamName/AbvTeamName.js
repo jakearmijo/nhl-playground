@@ -16,10 +16,12 @@ const AbvTeamName = ( { teamId } ) => {
     })
   }, []);
 
+const teamAbv = ensureObject(abv).abv
+
   return (
   <div>
     <h6>
-    {ensureObject(abv).abv}
+    {teamAbv}
     </h6>
   </div>
   )

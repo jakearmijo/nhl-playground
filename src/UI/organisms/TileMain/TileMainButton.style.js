@@ -7,7 +7,6 @@ import TeamName from '../../atoms/TeamName'
 import {
   zdSpacingXs,
   zdSpacingXxs,
-  zdColorGrey200,
 } from "@zendeskgarden/css-variables";
 import { mediaQuery } from "@zendeskgarden/react-theming";
 import { Row, Col } from "@zendeskgarden/react-grid";
@@ -32,7 +31,6 @@ export const GameListItemWrapper = styled(Col)`
   &:nth-of-type(even) {
     padding-bottom: 2px;
   }
-  /* ${({ isInherited }) => isInherited && `opacity: 0.4;`} */
   `;
     
 export const GameTile = styled(_Tile)`
@@ -41,24 +39,6 @@ export const GameTile = styled(_Tile)`
   margin-bottom: ${zdSpacingXxs};
   display: flex;
   flex-direction: column;
-  /* &:hover {
-    ${({ selected }) =>
-      selected
-        ? `
-        background-color: ${zdColorGrey200}!important;
-        border-color: ${zdColorGrey200}!important;
-      `
-        : `
-        background-color: ${zdColorGrey200}!important;
-        border-color: ${zdColorGrey200}!important;
-      `}
-  } */
-  /* ${({ selected }) =>
-    selected &&
-    `
-    background-color: ${zdColorGrey200}!important;
-    border-color: ${zdColorGrey200}!important;
-  `} */
 `;
 
 export const StyledDiv = styled.div`

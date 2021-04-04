@@ -1,38 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { ensureObject } from '../../../lib'
 
 
 
 // let color = 'grey' | 'red' | 'green' | 'yellow'
 
-const AbvTeamName = ( { gamePk } ) => {
-  
-  const [teamName, setTeamName] = useState();
-  
+const AbvTeamName = ( { teamId } ) => {
+  const [abv, setTeamAbv] = useState()
+
   useEffect(() => {
-    const fetchData = async () => {
-      await fetch(
-        `https://statsapi.web.nhl.com/api/v1/game/${gamePk}/feed/live`
-      )
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            setTeamName({
-              teamName: result.liveData,
-            });
-          },
-          (error) => {
-            setTeamName({
-              error,
-            });
-          }
-        );
-    };
-    fetchData();
-  }, [gamePk]);
+    fetch(`https://statsapi.web.nhl.com/api/v1/teams/${teamId}`)
+    .then( res => res.json())
+    .then( result => {
+      setTeamAbv({ abv: result.teams[0].abbreviation })
+    })
+  }, [teamId]);
+
+const teamAbv = ensureObject(abv).abv
+
   return (
   <div>
     <h6>
-
+    {teamAbv}
     </h6>
   </div>
   )

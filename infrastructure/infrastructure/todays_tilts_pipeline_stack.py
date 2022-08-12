@@ -25,6 +25,7 @@ class TodaysTiltsPipelineStack(Stack):
             input=source,
             commands=[
               "npm install -g aws-cdk",
+              "cd /infrastructure" 
               "pip install -r requirements.txt",
               "npx cdk synth -- v -o dist",
             ],

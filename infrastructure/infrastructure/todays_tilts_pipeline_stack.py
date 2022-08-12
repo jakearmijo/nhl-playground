@@ -26,8 +26,7 @@ class TodaysTiltsPipelineStack(Stack):
             input=source,
             commands=["cd infrastructure", "npm ci", "npm run build", "npx cdk synth"],
             primary_output_directory='infrastructure/cdk.out'
-        ),
-        docker_enabled_for_synth=True,
+        )
     )
 
     deploy=TodaysTiltsPipelineStage(self, 'Deploy')

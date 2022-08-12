@@ -54,7 +54,6 @@ class TodaysTiltsInfrastructureStack(Stack):
             'Get All NHL games',
             runtime=_lambda.Runtime.PYTHON_3_7,
             code=_lambda.Code.from_asset('lambda'),
-            handler='get_all_nhl_games.handler',
-            dead_letter_queue=True,
+            handler='get_all_nhl_games.handler'
         )
 

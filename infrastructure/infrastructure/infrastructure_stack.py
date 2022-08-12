@@ -18,7 +18,7 @@ class TodaysTiltsInfrastructureStack(Stack):
             bucket_name='todays-tilts-app-bucket',
             public_read_access=True,
             versioned=True,
-            object_ownership=s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
+            # object_ownership=s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
             website_index_document='index.html',
         )
         # create bucket policy 

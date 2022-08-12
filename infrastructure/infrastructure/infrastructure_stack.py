@@ -3,6 +3,7 @@ from aws_cdk import (
     Stack,
     aws_s3 as s3,
     aws_iam as iam,
+    aws_cloudfront as cloudfront,
 )
 from aws_cdk.aws_iam import PolicyStatement
 
@@ -35,5 +36,13 @@ class TodaysTiltsInfrastructureStack(Stack):
         )
         # assign the bucket todays_tilts_bucket_policy to the todays_tilts_bucket
         todays_tilts_bucket.add_to_resource_policy(todays_tilts_bucket_policy)
+
+
+
+        origin_access_identity = cloudfront.OriginAccessIdentity(self, "TodaysTiltsOriginAccessIdentity",
+            comment="comment for todays tilts"
+        )
+        todays_tilts_bucket.grantRead(origin_access_identity);
+
 
         

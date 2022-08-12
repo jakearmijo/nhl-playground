@@ -7,7 +7,6 @@ import TeamName from '../../atoms/TeamName'
 import {
   zdSpacingXs,
   zdSpacingXxs,
-  zdColorGrey200,
 } from "@zendeskgarden/css-variables";
 import { mediaQuery } from "@zendeskgarden/react-theming";
 import { Row, Col } from "@zendeskgarden/react-grid";
@@ -32,32 +31,14 @@ export const GameListItemWrapper = styled(Col)`
   &:nth-of-type(even) {
     padding-bottom: 2px;
   }
-  ${({ isInherited }) => isInherited && `opacity: 0.4;`}
-`;
+  `;
+    
 export const GameTile = styled(_Tile)`
   min-height: 60px;
   padding: ${zdSpacingXs};
   margin-bottom: ${zdSpacingXxs};
   display: flex;
   flex-direction: column;
-  &:hover {
-    ${({ selected }) =>
-      selected
-        ? `
-        background-color: ${zdColorGrey200}!important;
-        border-color: ${zdColorGrey200}!important;
-      `
-        : `
-        background-color: ${zdColorGrey200}!important;
-        border-color: ${zdColorGrey200}!important;
-      `}
-  }
-  ${({ selected }) =>
-    selected &&
-    `
-    background-color: ${zdColorGrey200}!important;
-    border-color: ${zdColorGrey200}!important;
-  `}
 `;
 
 export const StyledDiv = styled.div`
@@ -104,18 +85,19 @@ export const StyledTiledMain = ({ gameData }) => (
             <div>
               <div>
                 <StyledHeader>{game.status.detailedState}</StyledHeader>
+                <StyledHeader>@ {game.venue.name}</StyledHeader>
               </div>
               <Tiles.Label>
                 <StyledDiv>
-                  <TeamName gameData={game.teams}/>
+                  <TeamName game={game}/>
                 </StyledDiv>
               </Tiles.Label>
               <Tiles.Label>
                 {game.teams.away.score} - {game.teams.home.score}
               </Tiles.Label>
             </div>
-            <StatsTable gamePk={game.gamePk}/>
-            <EventsView gamePk={game.gamePk}></EventsView>
+            <StatsTable game={game}/>
+            <EventsView game={game}></EventsView>
           </Tiles.Tile>
         </GameListItemWrapper>
       ))}

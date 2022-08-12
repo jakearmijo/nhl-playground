@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import {
   zdSpacingXs,
   zdSpacingXxs,
-  zdColorGrey100,
 } from '@zendeskgarden/css-variables'
 import { Tiles } from '@zendeskgarden/react-forms'
 import { Col } from '@zendeskgarden/react-grid'
@@ -15,9 +14,9 @@ export const GamesListItemWrapper = styled(Col)`
   &:nth-of-type(even) {
     padding-left: 2px;
   }
-  ${({ isInherited }) => (
+  /* ${({ isInherited }) => (
     isInherited && `opacity: 0.4;`
-  )}
+  )} */
 `
 export const GameTile = styled(_Tile)`
   min-height: 60px;
@@ -25,7 +24,7 @@ export const GameTile = styled(_Tile)`
   margin-bottom: ${zdSpacingXxs};
   display: flex;
   flex-direction: column;
-  &:hover {
+  /* &:hover {
     ${({ selected }) => selected
       ? `
         background-color: ${zdColorGrey100}!important;
@@ -35,9 +34,9 @@ export const GameTile = styled(_Tile)`
         border-color: ${zdColorGrey100}!important;
       `
     }
-  }
-  ${({ selected }) => selected && `
+  } */
+  /* ${({ selected }) => selected && `
     background-color: ${zdColorGrey100}!important;
     border-color: ${zdColorGrey100}!important;
-  `}
+  `} */
 `

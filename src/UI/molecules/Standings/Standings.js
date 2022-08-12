@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import getScrollbarSize from "dom-helpers/scrollbarSize";
-import { white } from "chalk";
 import {
   Body,
   Cell,
@@ -48,20 +47,14 @@ function Standings() {
         };
         fetchData();
       }, []);
-      console.log("🚀 ~ file: Standings.js ~ line 39 ~ fetchData ~ standings", standings)
+      
   return (
     <div>
       {standings === undefined ? (
-        <Table style={{ minWidth: 500, maxWidth: 700, backgroundColor: white }}>
-          <Head>
-            <HeaderRow>
-              <HeaderCell>LOADING</HeaderCell>
-              <HeaderCell>LOADING</HeaderCell>
-              <HeaderCell>LOADING</HeaderCell>
-              <StyledSpacerCell aria-hidden />
-            </HeaderRow>
-          </Head>
-        </Table>
+        <div>
+          <h4>LOADING</h4>
+          <StyledSpacerCell aria-hidden />
+        </div>        
       ) : (
         <StyledDivContainer>
             <Head>
@@ -69,15 +62,12 @@ function Standings() {
               {standings.standings[0].standingsType} Standings
               </StyledH2>
             </Head>
-          <Table style={{ minWidth: 500 }}>
-          </Table>
                 {standings.standings
                   .map((team, idx) => (
-          <StyledDiv style={{ maxHeight: 500, overflowY: "auto" }}>
+          <StyledDiv style={{ maxHeight: 500, overflowY: "auto" }} key={idx}>
             <Table>
               <Body>
-                    <div key={idx}>
-                    <Head>
+                    <Head  key={idx}>
                         <StyledH4>{team.division.name}</StyledH4>
                         <StyledSpacerCell aria-hidden />
                     </Head>
@@ -96,7 +86,6 @@ function Standings() {
                         <Cell>{teamRank.points}</Cell>
                       </Row>
                       ))}
-                    </div>
               </Body>
             </Table>
           </StyledDiv>

@@ -15,7 +15,7 @@ class TodaysTiltsPipelineStack(Stack):
     # todays_tilts_github_repo_token = SecretValue.secrets_manager("todays_tilts_github_repo_token")
     # todays_tilts_github_repo_token = secretsmanager.Secret.from_secret_name_v2(self, "SecretFromName", "todays_tilts_github_repo_token")
     source = pipelines.CodePipelineSource.git_hub("jakearmijo/todays-tilts", "main",
-      authentication=SecretValue.secrets_manager("my-github-token")
+      authentication=SecretValue.secrets_manager("todays_tilts_github_token")
     )
     pipeline = pipelines.CodePipeline(self, "Todays-Tilts-Pipeline",
         synth=pipelines.ShellStep("Synth",

@@ -5,8 +5,6 @@ from aws_cdk import (
     aws_iam as iam,
     aws_cloudfront as cloudfront,
 )
-from aws_cdk.aws_iam import PolicyStatement
-
 
 class TodaysTiltsInfrastructureStack(Stack):
 
@@ -20,7 +18,7 @@ class TodaysTiltsInfrastructureStack(Stack):
             public_read_access=True,
             versioned=True,
             object_ownership=s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
-            website_index_document='/public/index.html',
+            website_index_document='index.html',
             block_public_access=s3.BlockPublicAccess(restrict_public_buckets=False)
         )
         # create bucket policy 
@@ -37,12 +35,7 @@ class TodaysTiltsInfrastructureStack(Stack):
         # assign the bucket todays_tilts_bucket_policy to the todays_tilts_bucket
         todays_tilts_bucket.add_to_resource_policy(todays_tilts_bucket_policy)
 
-
-
         origin_access_identity = cloudfront.OriginAccessIdentity(self, "TodaysTiltsOriginAccessIdentity",
             comment="comment for todays tilts"
         )
-        todays_tilts_bucket.grantRead(origin_access_identity);
-
-
-        
+        todays_tilts_bucket.grant_read(origin_access_identity);

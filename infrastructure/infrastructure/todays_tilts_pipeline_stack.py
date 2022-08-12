@@ -17,6 +17,7 @@ class TodaysTiltsPipelineStack(Stack):
     source = pipelines.CodePipelineSource.git_hub("jakearmijo/todays-tilts", "master",
       authentication=SecretValue.secrets_manager("todays_tilts_github_token")
     )
+
     pipeline = pipelines.CodePipeline(
         self, 
         "Todays-Tilts-Pipeline",
@@ -24,15 +25,9 @@ class TodaysTiltsPipelineStack(Stack):
           "Synth",
             input=source,
             commands=[
-              "npm install -g aws-cdk",
-              "cd /infrastructure" 
-              "pip install -r requirements.txt",
-              "npx cdk synth -- v -o dist",
-            ],
-            env={
-                "COMMIT_ID": source.source_attribute("CommitId")
-            },
-            
+              "npm install", 
+              "npm run build",
+            ]
         ),
         docker_enabled_for_synth=True,
     )

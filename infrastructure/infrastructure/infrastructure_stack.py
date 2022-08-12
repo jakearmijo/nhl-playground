@@ -3,8 +3,10 @@ from aws_cdk import (
     Stack,
     aws_s3 as s3,
     aws_iam as iam,
+    aws_lambda as _lambda,
     aws_cloudfront as cloudfront,
     aws_cloudfront_origins as origins,
+    RemovalPolicy
 )
 
 class TodaysTiltsInfrastructureStack(Stack):
@@ -18,9 +20,10 @@ class TodaysTiltsInfrastructureStack(Stack):
             bucket_name='todays-tilts-app-bucket',
             public_read_access=True,
             versioned=True,
-            # object_ownership=s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
             website_index_document='index.html',
+            removal_policy=RemovalPolicy.DESTROY
         )
+        
         # create bucket policy 
         # add new iam Any Principal
         # assign actions to get the website index.html
@@ -38,9 +41,20 @@ class TodaysTiltsInfrastructureStack(Stack):
         origin_access_identity = cloudfront.OriginAccessIdentity(self, "TodaysTiltsOriginAccessIdentity",
             comment="comment for todays tilts TodaysTiltsOriginAccessIdentity"
         )
-        
+
         todays_tilts_bucket.grant_read(origin_access_identity)
 
         cloudfront.Distribution(self, "Todays-Tilts-Distribution",
             default_behavior=cloudfront.BehaviorOptions(origin=origins.S3Origin(todays_tilts_bucket))
         )
+
+        ## Lambdas
+        get_all_nhl_games_lambda = _lambda.Function(
+            self,
+            'Get All NHL games',
+            runtime=_lambda.Runtime.PYTHON_3_7,
+            code=_lambda.Code.from_asset('lambda'),
+            handler='get_all_nhl_games.handler',
+            dead_letter_queue=True,
+        )
+

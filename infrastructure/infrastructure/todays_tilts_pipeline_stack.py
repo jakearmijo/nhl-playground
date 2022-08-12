@@ -24,7 +24,7 @@ class TodaysTiltsPipelineStack(Stack):
         synth=pipelines.ShellStep(
           "Synth",
             input=source,
-            commands=["cd infrastructure", "npm ci", "npm run build", "pip install -r requirements.txt", "npx cdk synth"],
+            commands=["cd infrastructure", "npm ci", "npm run build", "aws s3 cp build s3://todays-tilts-app-bucket/ --recursive", "pip install -r requirements.txt", "npx cdk synth"],
             primary_output_directory='infrastructure/cdk.out'
         )
     )

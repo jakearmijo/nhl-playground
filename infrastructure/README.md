@@ -33,19 +33,20 @@ If you are a Windows platform, you would activate the virtualenv like this:
 
 Once the virtualenv is activated, you can install the required dependencies.
 
-```
+```bash
 $ pip install -r requirements.txt
 ```
 
 At this point you can now synthesize the CloudFormation template for this code.
 
-```
+```bash
 $ cdk synth
 ```
 
 Add files to bucket
-```
-aws s3 cp build s3://todays-tilts-app-bucket/ --recursive
+
+```bash
+aws s3 cp build s3://todaystilts/ --recursive
 ```
 
 To add additional dependencies, for example other CDK libraries, just add

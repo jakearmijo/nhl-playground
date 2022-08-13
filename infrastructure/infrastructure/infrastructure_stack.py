@@ -16,8 +16,16 @@ class TodaysTiltsInfrastructureStack(Stack):
 
         # The code that defines your stack goes here
         # creating s3 bucket to upload files into
-        todays_tilts_bucket = s3.Bucket(self, "todays-tilts-app-bucket",
-            bucket_name='todays-tilts-app-bucket',
+        todays_tilts_bucket = s3.Bucket(self, "jakearmijo.com/todays-tilts",
+            bucket_name='jakearmijo.com/todays-tilts',
+            public_read_access=True,
+            versioned=True,
+            website_index_document='index.html',
+            removal_policy=RemovalPolicy.DESTROY
+        )
+        # creating s3 bucket to upload files into
+        todays_tilts_bucket = s3.Bucket(self, "todays-tilts",
+            bucket_name='todays-tilts',
             public_read_access=True,
             versioned=True,
             website_index_document='index.html',

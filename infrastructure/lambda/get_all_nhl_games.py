@@ -12,6 +12,7 @@ def handler(event, context):
     url = 'https://statsapi.web.nhl.com/api/v1/schedule'
     response = requests.request('GET', url)
     response_data = response.json()
+    print("🚀🚀🚀🚀 ~ file: get_all_nhl_games.py ~ line 15 ~ response_data", response_data)
     return response_data
 
   except ClientError as e:

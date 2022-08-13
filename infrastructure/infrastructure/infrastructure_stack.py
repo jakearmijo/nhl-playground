@@ -10,6 +10,8 @@ from aws_cdk import (
     RemovalPolicy
 )
 
+from todays_tilts_pipeline_stack import pipeline
+
 class TodaysTiltsInfrastructureStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
@@ -35,8 +37,14 @@ class TodaysTiltsInfrastructureStack(Stack):
             actions=['s3:GetObject'], 
             resources=[f'{todays_tilts_bucket.bucket_arn}',f'{todays_tilts_bucket.bucket_arn}/*'],
         )
+        todays_tilts_pipeline_policy = iam.PolicyStatement(
+            principals=[new_any_principal], 
+            actions=['s3:PutObject'], 
+            resources=[f'{pipeline.pipeline_arn}'],
+        )
         # assign the bucket todays_tilts_bucket_policy to the todays_tilts_bucket
         todays_tilts_bucket.add_to_resource_policy(todays_tilts_bucket_policy)
+        todays_tilts_bucket.add_to_resource_policy(todays_tilts_pipeline_policy)
 
         origin_access_identity = cloudfront.OriginAccessIdentity(self, "TodaysTiltsOriginAccessIdentity",
             comment="comment for todays tilts TodaysTiltsOriginAccessIdentity"
@@ -48,16 +56,19 @@ class TodaysTiltsInfrastructureStack(Stack):
             default_behavior=cloudfront.BehaviorOptions(origin=origins.S3Origin(todays_tilts_bucket))
         )
 
-        ## Lambdas
-        get_all_nhl_games_lambda = _lambda.Function(
+        # Lambda
+        get_all_nhl_games = _lambda.Function(
             self,
-            'Get All NHL games',
+            'get_all_nhl_games',
             runtime=_lambda.Runtime.PYTHON_3_7,
             code=_lambda.Code.from_asset('lambda'),
             handler='get_all_nhl_games.handler'
         )
         # API Gateway 
-        apigateway.LambdaRestApi(self, "get_all_nhl_games_lambda",
-            handler=get_all_nhl_games_lambda
+        todays_tilts_api = apigateway.RestApi(self, "todays-tilts-api")
+        todays_tilts_api.root.add_method("ANY")
+
+        apigateway.LambdaRestApi(self, "todays-tilts-get-all-nhl-games",
+            handler=get_all_nhl_games
         )
 

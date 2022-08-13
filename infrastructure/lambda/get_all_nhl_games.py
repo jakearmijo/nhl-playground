@@ -1,4 +1,3 @@
-from ast import Try
 import logging
 import requests
 import json
@@ -13,6 +12,7 @@ def handler(event, context):
     response = requests.request('GET', url)
     response_data = response.json()
     print("🚀🚀🚀🚀 ~ file: get_all_nhl_games.py ~ line 15 ~ response_data", response_data)
+
     return response_data
 
   except ClientError as e:

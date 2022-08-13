@@ -29,11 +29,6 @@ class TodaysTiltsPipelineStack(Stack):
         )
     )
 
-    # pipelines.ShellStep(
-    #   "Upload",
-    #   commands=["aws s3 cp build s3://todaystilts/ --recursive"]
-    # )
-
     deploy=TodaysTiltsPipelineStage(self, 'Deploy')
     pipeline.add_stage(deploy)
 

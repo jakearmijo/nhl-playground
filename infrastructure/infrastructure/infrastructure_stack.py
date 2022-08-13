@@ -4,6 +4,7 @@ from aws_cdk import (
     aws_s3 as s3,
     aws_iam as iam,
     aws_lambda as _lambda,
+    aws_apigateway as apigateway,
     aws_cloudfront as cloudfront,
     aws_cloudfront_origins as origins,
     RemovalPolicy
@@ -54,5 +55,9 @@ class TodaysTiltsInfrastructureStack(Stack):
             runtime=_lambda.Runtime.PYTHON_3_7,
             code=_lambda.Code.from_asset('lambda'),
             handler='get_all_nhl_games.handler'
+        )
+        # API Gateway 
+        apigateway.LambdaRestApi(self, "get_all_nhl_games_lambda",
+            handler=get_all_nhl_games_lambda
         )
 

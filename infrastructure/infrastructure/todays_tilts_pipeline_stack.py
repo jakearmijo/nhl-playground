@@ -7,6 +7,7 @@ from aws_cdk import (
   # aws_secretsmanager as secretsmanager,
 )
 from todays_tilts_pipeline_stage import TodaysTiltsPipelineStage
+# from infrastructure_stack import todays_tilts_bucket
 
 # insert pipeline stage
 class TodaysTiltsPipelineStack(Stack):
@@ -17,7 +18,7 @@ class TodaysTiltsPipelineStack(Stack):
     source = pipelines.CodePipelineSource.git_hub("jakearmijo/todays-tilts", "master",
       authentication=SecretValue.secrets_manager("todays_tilts_github_token")
     )
-
+    # create role giving write access to s3 bucket
     pipeline = pipelines.CodePipeline(
         self, 
         "Todays-Tilts-Pipeline",
@@ -25,13 +26,12 @@ class TodaysTiltsPipelineStack(Stack):
           "Synth",
             input=source,
             commands=[
-              "cd infrastructure",
               "npm ci",
               "npm run build",
+              "aws s3 cp build s3://todaystilts/ --recursive",
+              "cd infrastructure",
               "pip install -r requirements.txt",
               "npx cdk synth",
-              "cd ../"
-              "aws s3 cp build s3://todaystilts/ --recursive",
               ],
             primary_output_directory='infrastructure/cdk.out'
         )

@@ -10,8 +10,6 @@ from aws_cdk import (
     RemovalPolicy
 )
 
-from todays_tilts_pipeline_stack import pipeline
-
 class TodaysTiltsInfrastructureStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
@@ -37,14 +35,8 @@ class TodaysTiltsInfrastructureStack(Stack):
             actions=['s3:GetObject'], 
             resources=[f'{todays_tilts_bucket.bucket_arn}',f'{todays_tilts_bucket.bucket_arn}/*'],
         )
-        todays_tilts_pipeline_policy = iam.PolicyStatement(
-            principals=[new_any_principal], 
-            actions=['s3:PutObject'], 
-            resources=[f'{pipeline.pipeline_arn}'],
-        )
         # assign the bucket todays_tilts_bucket_policy to the todays_tilts_bucket
         todays_tilts_bucket.add_to_resource_policy(todays_tilts_bucket_policy)
-        todays_tilts_bucket.add_to_resource_policy(todays_tilts_pipeline_policy)
 
         origin_access_identity = cloudfront.OriginAccessIdentity(self, "TodaysTiltsOriginAccessIdentity",
             comment="comment for todays tilts TodaysTiltsOriginAccessIdentity"

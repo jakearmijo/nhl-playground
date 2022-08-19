@@ -11,6 +11,7 @@ export default class TileMainButton extends Component {
   }
 
   componentDidMount() {
+    // TODO: change to call lambda
     fetch("https://statsapi.web.nhl.com/api/v1/schedule")
       .then((res) => res.json())
       .then(

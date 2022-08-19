@@ -5,8 +5,10 @@ from aws_cdk import (
     aws_iam as iam,
     aws_lambda as _lambda,
     aws_apigateway as apigateway,
+    aws_route53 as route53,
     aws_cloudfront as cloudfront,
     aws_cloudfront_origins as origins,
+    aws_certificatemanager as acm,
     RemovalPolicy
 )
 
@@ -17,8 +19,8 @@ class TodaysTiltsInfrastructureStack(Stack):
 
         # The code that defines your stack goes here
         # creating s3 bucket to upload files into
-        todays_tilts_bucket = s3.Bucket(self, "todaystilts",
-            bucket_name='todaystilts',
+        todays_tilts_bucket = s3.Bucket(self, "todaystilts.jakearmijo.com",
+            bucket_name='todaystilts.jakearmijo.com',
             public_read_access=True,
             versioned=True,
             website_index_document='index.html',
@@ -41,12 +43,19 @@ class TodaysTiltsInfrastructureStack(Stack):
         origin_access_identity = cloudfront.OriginAccessIdentity(self, "TodaysTiltsOriginAccessIdentity",
             comment="comment for todays tilts TodaysTiltsOriginAccessIdentity"
         )
-
         todays_tilts_bucket.grant_read(origin_access_identity)
 
-        cloudfront.Distribution(self, "Todays-Tilts-Distribution",
-            default_behavior=cloudfront.BehaviorOptions(origin=origins.S3Origin(todays_tilts_bucket))
-        )
+        # my_hosted_zone = route53.HostedZone(self, "TodaysTiltsHostedZone",
+        #     zone_name="todaystilts.jakearmijo.com"
+        # )
+        # acm.Certificate(self, "Certificate",
+        #     domain_name="todaystilts.jakearmijo.com",
+        #     validation=acm.CertificateValidation.from_dns(my_hosted_zone)
+        # )
+
+        # cloudfront.Distribution(self, "Todays-Tilts-Distribution",
+        #     default_behavior=cloudfront.BehaviorOptions(origin=origins.S3Origin(todays_tilts_bucket))
+        # )
 
         # Lambda
         get_all_nhl_games = _lambda.Function(
@@ -56,11 +65,8 @@ class TodaysTiltsInfrastructureStack(Stack):
             code=_lambda.Code.from_asset('lambda'),
             handler='get_all_nhl_games.handler'
         )
-        # API Gateway 
-        todays_tilts_api = apigateway.RestApi(self, "todays-tilts-api")
-        todays_tilts_api.root.add_method("ANY")
-
-        apigateway.LambdaRestApi(self, "todays-tilts-get-all-nhl-games",
+        # API Gateway
+        apigateway.LambdaRestApi(self, "Todays-Tilts-Get-All-Nhl-Games",
             handler=get_all_nhl_games
         )
 

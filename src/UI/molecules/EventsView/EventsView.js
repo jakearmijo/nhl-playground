@@ -11,7 +11,7 @@ import {
   Table,
 } from "@zendeskgarden/react-tables";
 import DetailButton from "../../atoms/DetailButton";
-import { ensureObject } from '../../../lib'
+import { ensureObject } from "../../../lib";
 
 import { white } from "chalk";
 
@@ -21,10 +21,10 @@ const StyledSpacerCell = styled(HeaderCell)`
   padding: 0;
   width: ${SCROLLBAR_SIZE}px;
 `;
-function EventsView( props ) {
-  
-  const [liveGame, setState] = useState();
-  const { gamePk } = props.game
+function EventsView(props) {
+  const [liveGame, setLiveGameDate] = useState();
+  const { gamePk } = props.game;
+
   useEffect(() => {
     const fetchData = async () => {
       await fetch(
@@ -33,12 +33,12 @@ function EventsView( props ) {
         .then((res) => res.json())
         .then(
           (result) => {
-            setState({
+            setLiveGameDate({
               liveGame: result.liveData.plays.allPlays,
             });
           },
           (error) => {
-            setState({
+            setLiveGameDate({
               error,
             });
           }
@@ -49,23 +49,20 @@ function EventsView( props ) {
 
   function handleClick(e) {
     e.preventDefault();
-    fetch(
-      `https://statsapi.web.nhl.com/api/v1/game/${gamePk}/feed/live`
-      )
+    fetch(`https://statsapi.web.nhl.com/api/v1/game/${gamePk}/feed/live`)
       .then((res) => res.json())
       .then(
         (result) => {
-          setState({
+          setLiveGameDate({
             liveGame: ensureObject(result.liveData.plays.allPlays),
           });
         },
         (error) => {
-          setState({
+          setLiveGameDate({
             error,
           });
         }
-        );
-        console.log(`Updating Play by Play for game ID ${gamePk}.`);
+      );
   }
 
   return (

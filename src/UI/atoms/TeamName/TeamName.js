@@ -3,9 +3,6 @@ import { Row } from '@zendeskgarden/react-grid';
 import { Code } from '@zendeskgarden/react-typography';
 import { StyledCol } from './TeamName.style'
 
-
-// let color = 'grey' | 'red' | 'green' | 'yellow'
-
 const TeamName = ({ game }) => {
   let awayScore = game.teams.away.score
   let awayTeamName = game.teams.away.team.name
@@ -38,22 +35,13 @@ const TeamName = ({ game }) => {
      }
   }
 
-  // function checkForHomeColor(){    
-  //   if(homeScore > awayScore){
-  //     return 'green'
-  //   } else{
-  //     return 'grey'
-  //   } 
-  // }
-
   return (
   <Row>
-    {/* <Col sm={4} textAlign="center">
-      <Code hue="green">Veggies es bonus</Code>
-    </Col> */}
     <StyledCol textAlign="center">
       <Code hue={colorScore(homeScore, awayScore).color.awayColor}>{awayTeamName}</Code>
+      <div></div>
       vs
+      <div></div>
       <Code hue={colorScore(homeScore, awayScore).color.homeColor}>{homeTeamName}</Code>
     </StyledCol>
   </Row>

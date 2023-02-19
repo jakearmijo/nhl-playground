@@ -20,7 +20,7 @@ import {
 const SCROLLBAR_SIZE = getScrollbarSize();
 
 const StyledSpacerCell = styled(HeaderCell)`
-  padding: 0;
+  padding: 5;
   width: ${SCROLLBAR_SIZE}px;
 `;
 function Standings() {
@@ -49,7 +49,7 @@ function Standings() {
       }, []);
       
   return (
-    <div>
+    <>
       {standings === undefined ? (
         <div>
           <h4>LOADING</h4>
@@ -92,8 +92,7 @@ function Standings() {
                   ))}
         </StyledDivContainer>
       )}
-                
-    </div>
+    </>
   );
 }
 

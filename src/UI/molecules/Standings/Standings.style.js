@@ -50,4 +50,5 @@ export const StyledDiv = styled.div`
 
 export const StyledDivContainer = styled.div`
   display: flex;
+  align-content: center;
 `
